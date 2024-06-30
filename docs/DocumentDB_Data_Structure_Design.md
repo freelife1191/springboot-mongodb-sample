@@ -1,5 +1,31 @@
 # AWS DocumentDB(MongoDB) 데이터 구조 설계
 
+<!-- TOC -->
+* [AWS DocumentDB(MongoDB) 데이터 구조 설계](#aws-documentdbmongodb-데이터-구조-설계)
+  * [🚦 데이터 설계 요건](#-데이터-설계-요건)
+  * [🚦 2. Database 선정 및 비용 산정](#-2-database-선정-및-비용-산정)
+    * [📌 데이터 구조 개선을 위한 Database 검토](#-데이터-구조-개선을-위한-database-검토)
+      * [► 비용 산정 데이터 기준](#-비용-산정-데이터-기준)
+      * [► Amazon DocumentDB](#-amazon-documentdb)
+      * [► Amazon DynamoDB](#-amazon-dynamodb)
+        * [On-demand](#on-demand)
+        * [Provisioned](#provisioned)
+    * [📌 DocumentDB 선정 이유](#-documentdb-선정-이유)
+  * [🚦 3. 아키텍처 설계](#-3-아키텍처-설계)
+    * [📌 최근 본 여행 아키텍처 V1 (변경 전)](#-최근-본-여행-아키텍처-v1-변경-전)
+    * [📌 최근 본 여행 아키텍처 V2 (변경 후)](#-최근-본-여행-아키텍처-v2-변경-후)
+  * [🚦 4. Schema 설계](#-4-schema-설계)
+    * [📌 현재 최근 본 여행 데이터 구조 참고](#-현재-최근-본-여행-데이터-구조-참고)
+    * [📌 최근 검색, 최근 조회, 최근 본 여행 MongoDB 데이터 설계](#-최근-검색-최근-조회-최근-본-여행-mongodb-데이터-설계)
+      * [► MongoDB 설계 대상 객체 및 속성](#-mongodb-설계-대상-객체-및-속성)
+      * [► MongoDB Document 설계](#-mongodb-document-설계)
+        * [최근 본 여행 Database 구조](#최근-본-여행-database-구조)
+        * [최근 본 여행 Collection 구성](#최근-본-여행-collection-구성)
+          * [유저 컬렉션](#유저-컬렉션)
+          * [최근 조회 컬렉션](#최근-조회-컬렉션)
+          * [최근 검색 컬렉션](#최근-검색-컬렉션)
+<!-- TOC -->
+
 ---
 
 ## 🚦 데이터 설계 요건

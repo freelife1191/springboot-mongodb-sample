@@ -1,6 +1,40 @@
 # SpringBoot MongoDB Sample
 
-[TOC]
+<!-- TOC -->
+* [SpringBoot MongoDB Sample](#springboot-mongodb-sample)
+  * [🚦 Overview](#-overview)
+  * [🚦 Spring Boot Data MongoDB 개발환경 셋팅](#-spring-boot-data-mongodb-개발환경-셋팅)
+    * [📌 build 환경 구성](#-build-환경-구성)
+      * [🛠️ Gradle](#-gradle)
+      * [🛠️ Maven](#-maven)
+    * [📌 `application.yml` 설정](#-applicationyml-설정)
+    * [📌 Auditing 설정](#-auditing-설정)
+    * [📌 Repository 설정](#-repository-설정)
+  * [🚦 Spring Boot Data MongoDB Entity 구성](#-spring-boot-data-mongodb-entity-구성)
+    * [📌 복합키와 인덱스 구성](#-복합키와-인덱스-구성)
+      * [▶︎ MongoDB 복합키(`@Embeddable`, `@EmbeddedId`) 구성](#-mongodb-복합키embeddable-embeddedid-구성)
+      * [▶︎ MongoDB Expired 인덱스(`@Indexed`) 구성](#-mongodb-expired-인덱스indexed-구성)
+    * [📌 Entity(`@Entity`, `@Document`) 구성 및 연관관계(`@DBRef`) 설정](#-entityentity-document-구성-및-연관관계dbref-설정)
+      * [▶︎ UserEntity(유저)](#-userentity유저)
+      * [▶︎ RecentSearchEntity(최근 검색)](#-recentsearchentity최근-검색)
+      * [▶︎ RecentViewEntity(최근 조회)](#-recentviewentity최근-조회)
+  * [🚦Spring Boot Data MongoDB Aggregation(`$lookup`) 예제](#spring-boot-data-mongodb-aggregationlookup-예제)
+    * [📌 MongoDB Aggregation `$match`와 `$lookup`을 사용한 Join Query 예제](#-mongodb-aggregation-match와-lookup을-사용한-join-query-예제)
+  * [🚦Spring Boot DataMongoDB QueryDSL 및 Wrapper를 사용한 구성 예제](#spring-boot-datamongodb-querydsl-및-wrapper를-사용한-구성-예제)
+    * [📌 MongoDB QueryDSL 및 Wrapper 구성](#-mongodb-querydsl-및-wrapper-구성)
+  * [🚦Spring Boot Data MongoDB Service 구현 예제](#spring-boot-data-mongodb-service-구현-예제)
+    * [📌 Service 구현](#-service-구현)
+      * [▶︎ UserService(유저 서비스) 구현](#-userservice유저-서비스-구현)
+      * [▶︎ RecentSearchMongoService(최근 검색 서비스) 구현](#-recentsearchmongoservice최근-검색-서비스-구현)
+      * [▶︎ RecentViewMongoService(최근 조회 서비스) 구현](#-recentviewmongoservice최근-조회-서비스-구현)
+    * [📌 `AbstractMongoEventListener` Lifecycle Event를 활용한 Cascade 삭제](#-abstractmongoeventlistener-lifecycle-event를-활용한-cascade-삭제)
+      * [▶︎ Cascade 삭제 구현](#-cascade-삭제-구현)
+  * [🚦Spring Boot Data MongoDB Test 코드 작성](#spring-boot-data-mongodb-test-코드-작성)
+    * [📌 Service 테스트 코드 작성](#-service-테스트-코드-작성)
+      * [▶︎ UserMongoServiceTest(유저 서비스 테스트)](#-usermongoservicetest유저-서비스-테스트)
+      * [▶︎ RecentSearchMongoServiceTest(최근 검색 서비스 테스트)](#-recentsearchmongoservicetest최근-검색-서비스-테스트)
+      * [▶︎ RecentViewMongoServiceTest(최근 조회 서비스 테스트)](#-recentviewmongoservicetest최근-조회-서비스-테스트)
+<!-- TOC -->
 
 ## 🚦 Overview
 

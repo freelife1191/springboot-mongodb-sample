@@ -1,5 +1,16 @@
 # Document DB 개발환경 셋팅
 
+<!-- TOC -->
+* [Document DB 개발환경 셋팅](#document-db-개발환경-셋팅)
+  * [🚦 개발 환경 설정](#-개발-환경-설정)
+    * [Mongo Shell 접속 명렁어](#mongo-shell-접속-명렁어)
+    * [SSM Connection 명령어](#ssm-connection-명령어)
+    * [Application 접속 URI](#application-접속-uri)
+    * [DocumentDB Local 접속 Alias 설정](#documentdb-local-접속-alias-설정)
+  * [🚦 MongoDB Compass로 DocumentDB 접속](#-mongodb-compass로-documentdb-접속)
+  * [MongoDB Compass Aggregations 탭에서 Aggregation 테스트](#mongodb-compass-aggregations-탭에서-aggregation-테스트)
+<!-- TOC -->
+
 Sample Code를 작성하기 전에 AWS DocumentDB 로 개발환경을 셋팅해서 진행했던 내용을 정리
 
 AWS Document DB의 경우 기본적으로 Private 도메인만 제공되므로 로컬에서는 AWS SSM을 통해 port forwarding 하여 접속
