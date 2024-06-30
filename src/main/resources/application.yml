@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: springboot-mongodb-sample
+  profiles:
+    active: dev
+  # Sample 구성에서는 testcontainers 로 테스트를 진행했지만 AWS DocumentDB를 구성하여 테스트 했음
+  #data:
+    #mongodb:
+      #uri: mongodb://username:password@test-dev-docdb.cluster-cueokyhf6yae.ap-northeast-2.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false&w=majority
+      #database: database
+      # 이 설정을 해야지 Index를 자동으로 생성할 수 있음
+      #auto-index-creation: true
+logging:
+  level:
+    com.querydsl.mongodb: debug
+    #org.springframework.data.mongodb.core.MongoTemplate: debug
